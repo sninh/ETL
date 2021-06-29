@@ -4,71 +4,36 @@
 
 
 CREATE TABLE "SPY" (
-    "date" date   NOT NULL,
+    "date_time" date   NOT NULL,
     "stock_price" varchar   NOT NULL,
     "ticker" varchar   NOT NULL,
     CONSTRAINT "pk_SPY" PRIMARY KEY (
-        "date"
+        "date_time"
      )
 );
 
-CREATE TABLE "Monetary_Policy" (
-    "type" varchar   NOT NULL,
+CREATE TABLE "Title_category" (
+    "url" varchar   NOT NULL,
+    "title" varchar   NOT NULL,
+    "category" varchar   NOT NULL,
+    CONSTRAINT "pk_Title_category" PRIMARY KEY (
+        "url"
+     )
+);
+
+CREATE TABLE "date_time" (
+    "url" varchar   NOT NULL,
     "date" date   NOT NULL,
-    "Title" varchar   NOT NULL,
-    CONSTRAINT "pk_Monetary_Policy" PRIMARY KEY (
-        "Title"
+    "time" varchar   NOT NULL,
+    "date_time" date   NOT NULL,
+    CONSTRAINT "pk_date_time" PRIMARY KEY (
+        "url"
      )
 );
 
-CREATE TABLE "Banking_applications" (
-    "type" varchar   NOT NULL,
-    "date" date   NOT NULL,
-    "Title" varchar   NOT NULL,
-    CONSTRAINT "pk_Banking_applications" PRIMARY KEY (
-        "Title"
-     )
-);
+ALTER TABLE "Title_category" ADD CONSTRAINT "fk_Title_category_url" FOREIGN KEY("url")
+REFERENCES "date_time" ("url");
 
-CREATE TABLE "Enforcement_actions" (
-    "type" varchar   NOT NULL,
-    "date" date   NOT NULL,
-    "Title" varchar   NOT NULL,
-    CONSTRAINT "pk_Enforcement_actions" PRIMARY KEY (
-        "Title"
-     )
-);
-
-CREATE TABLE "Banking_consumer" (
-    "type" varchar   NOT NULL,
-    "date" date   NOT NULL,
-    "Title" varchar   NOT NULL,
-    CONSTRAINT "pk_Banking_consumer" PRIMARY KEY (
-        "Title"
-     )
-);
-
-CREATE TABLE "other_announcements" (
-    "type" varchar   NOT NULL,
-    "date" date   NOT NULL,
-    "Title" varchar   NOT NULL,
-    CONSTRAINT "pk_other_announcements" PRIMARY KEY (
-        "Title"
-     )
-);
-
-ALTER TABLE "Monetary_Policy" ADD CONSTRAINT "fk_Monetary_Policy_date" FOREIGN KEY("date")
-REFERENCES "SPY" ("date");
-
-ALTER TABLE "Banking_applications" ADD CONSTRAINT "fk_Banking_applications_date" FOREIGN KEY("date")
-REFERENCES "SPY" ("date");
-
-ALTER TABLE "Enforcement_actions" ADD CONSTRAINT "fk_Enforcement_actions_date" FOREIGN KEY("date")
-REFERENCES "SPY" ("date");
-
-ALTER TABLE "Banking_consumer" ADD CONSTRAINT "fk_Banking_consumer_date" FOREIGN KEY("date")
-REFERENCES "SPY" ("date");
-
-ALTER TABLE "other_announcements" ADD CONSTRAINT "fk_other_announcements_date" FOREIGN KEY("date")
-REFERENCES "SPY" ("date");
+ALTER TABLE "date_time" ADD CONSTRAINT "fk_date_time_date_time" FOREIGN KEY("date_time")
+REFERENCES "SPY" ("date_time");
 
