@@ -1,6 +1,6 @@
 # Crypto Crustaceans ETL Project
 
-For our ETL project, we've decided to examine the immediate impact a central banking system has on the securities market, specifically the United States' central bank, the Federal Reserve, and its impact on the S&P 500 index.
+For our ETL project, we've decided to examine the immediate impact a central banking system has on the securities market, specifically the United States' central bank, the Federal Reserve, and its impact on the S&P 500 index. Monetary policy can take a long time to impact interest rate, inflation, unemployment, etc, and those effects are often hard to quantify. With that said, the market can react immediately to sudden announcements.
 
 The Fed Board of Governors keep a log of all their press releases since 2006 on their official website (https://www.federalreserve.gov/newsevents/pressreleases.htm) and categorizes them by types: Monetary Policy, Orders on Banking Application, Enforecement Actions, Banking and Consumer Regulatory Policy, and Other Announcements. We are scraping announcement dates, titles of press releases, types, and contents in order to plot them against the changes in the S&P 500 index.
 
